@@ -2,8 +2,6 @@ package com.test.testhttprequests;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -14,11 +12,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.test.testhttprequests.model.WeatherResponse;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city;
         Map<String, String> headers = new HashMap<>();
         headers.put("x-api-key", "9f5afe53fe98733ba4d66e116f374ddd");
-        String response = HttpUtil.getResponse(url, headers);
+        String response = HttpUtil.sendRequest(url, headers, null);
         Log.i("MainActivityLogTag", "response: " + response);
         return response;
     }
